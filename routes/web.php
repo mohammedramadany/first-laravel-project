@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     // return view('welcome');
+//     return "TEST";
+// });
+
+
+Route::get(uri: '/',action: [PagesController::class, 'index']);
+
+
+Route::get(uri: '/students',action: [StudentController::class, 'index']);
+
+Route::get(uri: '/students/{name}',action: [StudentController::class, 'show']);
+
+Route::delete(uri: '/students/{name}',action: [StudentController::class, 'destroy']);
+
